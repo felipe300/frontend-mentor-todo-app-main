@@ -4,7 +4,7 @@ const TodoList = ({ todos, updateTodo, removeTodo }) => {
   return (
     <div className="bg-white rounded-t-md mt-8">
       {
-        todos.map((todo) => {
+        todos?.map((todo) => {
           return <TodoItem
             key={todo.id}
             todo={todo}
