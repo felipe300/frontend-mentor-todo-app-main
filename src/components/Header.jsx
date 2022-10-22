@@ -1,4 +1,4 @@
-import MoonIcon from "./icons/MoonIcon"
+import IconMoon from "./icons/IconMoon"
 
 const Header = () => {
   return (
@@ -11,7 +11,7 @@ const Header = () => {
         </h1>
         <button>
           {/* <img src={Moon} alt={`${Moon ? "moon icon" : "sun icon"}`} /> */}
-          <MoonIcon />
+          <IconMoon />
         </button>
       </div>
     </header>
