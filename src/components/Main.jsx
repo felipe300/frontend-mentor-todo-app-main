@@ -34,6 +34,12 @@ const Main = () => {
     setTodos(todos.map((todo) => todo.id === id ? { ...todo, completed: !todo.completed } : todo))
   }
 
+  const countItemsLeft = todos.filter((todo) => !todo.completed).length
+
+  const clearCompleted = () => {
+    setTodos(todos.filter((todo) => !todo.completed))
+  }
+
   return (
     <div
       className="bg-[url('/images/bg-mobile-light.jpg')] bg-gray-300 bg-no-repeat bg-contain min-h-screen"
@@ -46,7 +52,10 @@ const Main = () => {
           updateTodo={updateTodo}
           removeTodo={removeTodo}
         />
-        <TodoComputed />
+        <TodoComputed
+          countItemsLeft={countItemsLeft}
+          clearCompleted={clearCompleted}
+        />
         <TodoFilter />
       </main>
       <p className="text-center mt-8 text-gray-400">Drag and drop to reorder list</p>
