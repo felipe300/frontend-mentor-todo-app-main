@@ -1,11 +1,16 @@
 import TodoItem from "./TodoItem"
 
-const TodoList = ({ todos }) => {
+const TodoList = ({ todos, updateTodo, removeTodo }) => {
   return (
     <div className="bg-white rounded-t-md mt-8">
       {
         todos.map((todo) => {
-          return <TodoItem key={todo.id} todo={todo} />
+          return <TodoItem
+            key={todo.id}
+            todo={todo}
+            updateTodo={updateTodo}
+            removeTodo={removeTodo}
+          />
         })
       }
     </div>
