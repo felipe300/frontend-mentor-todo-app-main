@@ -1,23 +1,8 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Header from "../components/Header";
-import TodoCreate from "../components/todo/TodoCreate";
-import TodoList from "../components/todo/TodoList";
-import TodoFilter from "../components/todo/TodoFilter";
-import TodoComputed from "../components/todo/TodoComputed";
+import Main from "../components/Main";
 ---
 
 <Layout title="Todo App">
-	<div
-		class="bg-[url('/images/bg-mobile-light.jpg')] bg-gray-300 bg-no-repeat bg-contain min-h-screen"
-	>
-		<Header />
-		<main class="container mx-auto px-4 mt-8">
-			<TodoCreate />
-			<TodoList />
-			<TodoComputed />
-			<TodoFilter />
-		</main>
-		<p class="text-center mt-8 text-gray-400">Drag and drop to reorder list</p>
-	</div>
+	<Main client:load />
 </Layout>
