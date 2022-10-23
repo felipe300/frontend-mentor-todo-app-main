@@ -1,7 +1,7 @@
 const ButtonItem = ({ changeFilter, filter, type }) => {
   return (
     <button
-      className={`${filter === `${type}` ? "text-blue-600 hover:text-gray-400w" : "text-gray-400 hover:text-blue-600"} `}
+      className={`${filter === `${type}` ? "text-blue-600 hover:text-gray-400" : "text-gray-400 hover:text-blue-600"} `}
       onClick={() => changeFilter(type)}
     >
       {type.charAt(0).toUpperCase() + type.slice(1)}
@@ -13,7 +13,7 @@ const TodoFilter = ({ changeFilter, filter, type }) => {
   return (
     <section className="container mx-auto mt-8">
       <div
-        className="bg-white text-gray-400 flex gap-4 p-4 justify-center rounded-md dark:bg-gray-800 transition-all duration-1000"
+        className="bg-white flex gap-4 p-4 justify-center rounded-md dark:bg-gray-800 transition-all duration-1000"
       >
         <ButtonItem
           changeFilter={changeFilter}
