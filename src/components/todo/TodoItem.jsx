@@ -4,15 +4,15 @@ import IconCross from '../icons/IconCross'
 const TodoItem = ({ todo, updateTodo, removeTodo }) => {
   const { id, completed, title } = todo
   return (
-    <article className="flex gap-4 p-4 border-b border-b-gray-300">
-      <button className={`rounded-full border-2 w-6 h-6 flex-none ${completed ? 'bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 grid place-items-center' : 'inline-block'}`}
+    <article className="flex gap-4 p-4 border-b border-b-gray-300 dark:bg-gray-800 dark:border-b-gray-700">
+      <button className={`rounded-full border-2 w-6 h-6 flex-none dark:border-gray-700 ${completed ? 'bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 dark:bg-gradient-to-r dark:from-indigo-300 dar:via-purple-300 dark:to-pink-300 grid place-items-center' : 'inline-block'}`}
         onClick={() => updateTodo(id)}
       >
         {
           completed && <IconCheck />
         }
       </button>
-      <p className={`text-gray-600 grow ${completed && 'line-through'}`}>{title}</p>
+      <p className={`text-gray-600 dark:text-gray-400 grow ${completed && 'line-through'}`}>{title}</p>
       <button className="flex-none" onClick={() => removeTodo(id)}>
         <IconCross />
       </button>

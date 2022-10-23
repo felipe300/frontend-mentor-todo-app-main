@@ -56,7 +56,7 @@ const Main = () => {
 
   return (
     <div
-      className="bg-[url('/images/bg-mobile-light.jpg')] bg-gray-300 bg-no-repeat bg-contain min-h-screen"
+      className="bg-[url('/images/bg-mobile-light.jpg')] dark:bg-[url('/images/bg-mobile-dark.jpg')] bg-gray-300 bg-no-repeat bg-contain min-h-screen dark:bg-gray-900"
     >
       <Header />
       <main className="container mx-auto px-4 mt-8">
@@ -75,7 +75,7 @@ const Main = () => {
           filter={filter}
         />
       </main>
-      <p className="text-center mt-8 text-gray-400">Drag and drop to reorder list</p>
+      <p className="text-center mt-8 text-gray-400 dark:text-gray-700">Drag and drop to reorder list</p>
     </div>
   )
 }

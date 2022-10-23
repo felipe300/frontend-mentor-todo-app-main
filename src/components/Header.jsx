@@ -1,7 +1,28 @@
+import { useEffect, useState } from "react"
 import IconMoon from "./icons/IconMoon"
 import IconSun from "./icons/IconSun"
 
+const initialStateMode = localStorage.getItem('theme') === 'dark'
+console.log(initialStateMode)
+
 const Header = () => {
+  (async () => {
+    await import("../utils/darkmode")
+  })()
+
+  const [darkMode, setDarkMode] = useState(initialStateMode)
+
+  useEffect(() => {
+    if (darkMode) {
+      document.documentElement.classList.add('dark')
+      localStorage.setItem('theme', 'dark')
+    } else {
+      document.documentElement.classList.remove('dark')
+      localStorage.setItem('theme', 'light')
+    }
+  }, [darkMode])
+
+
   return (
     <header className="container mx-auto px-4 pt-8">
       <div className="flex justify-between">
@@ -10,9 +31,8 @@ const Header = () => {
         >
           Todo
         </h1>
-        <button>
-          {/* <img src={Moon} alt={`${Moon ? "moon icon" : "sun icon"}`} /> */}
-          <IconSun />
+        <button onClick={() => setDarkMode(!darkMode)}>
+          {darkMode ? <IconSun /> : <IconMoon />}
         </button>
       </div>
     </header>

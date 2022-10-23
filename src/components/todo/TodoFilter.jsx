@@ -13,7 +13,7 @@ const TodoFilter = ({ changeFilter, filter, type }) => {
   return (
     <section className="container mx-auto mt-8">
       <div
-        className="bg-white text-gray-400 flex gap-4 p-4 justify-center rounded-md"
+        className="bg-white text-gray-400 flex gap-4 p-4 justify-center rounded-md dark:bg-gray-800"
       >
         <ButtonItem
           changeFilter={changeFilter}
