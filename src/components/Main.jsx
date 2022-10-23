@@ -56,7 +56,7 @@ const Main = () => {
 
   return (
     <div
-      className="bg-[url('/images/bg-mobile-light.jpg')] dark:bg-[url('/images/bg-mobile-dark.jpg')] bg-gray-300 bg-no-repeat bg-contain min-h-screen dark:bg-gray-900"
+      className="bg-[url('/images/bg-mobile-light.jpg')] dark:bg-[url('/images/bg-mobile-dark.jpg')] bg-gray-300 bg-no-repeat bg-contain min-h-screen dark:bg-gray-900 transition-all duration-1000"
     >
       <Header />
       <main className="container mx-auto px-4 mt-8">
