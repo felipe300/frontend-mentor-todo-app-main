@@ -3,7 +3,6 @@ import IconMoon from "./icons/IconMoon"
 import IconSun from "./icons/IconSun"
 
 const initialStateMode = localStorage.getItem('theme') === 'dark'
-console.log(initialStateMode)
 
 const Header = () => {
   (async () => {

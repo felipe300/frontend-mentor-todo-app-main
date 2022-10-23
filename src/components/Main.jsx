@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 import Header from "../components/Header"
 import TodoCreate from "../components/todo/TodoCreate"
@@ -13,8 +13,14 @@ const initialStateTodos = [
   { id: '4', title: 'Learn CSS', completed: false },
 ]
 
+// const initialStateTodos = JSON.parse(localStorage.getItem('todos')) || []
+
 const Main = () => {
   const [todos, setTodos] = useState(initialStateTodos)
+
+  // useEffect(() => {
+  //   localStorage.setItem('todos', JSON.stringify(todos))
+  // }, [todos])
 
   const createTodo = (title) => {
     const newTodo = {
@@ -56,10 +62,10 @@ const Main = () => {
 
   return (
     <div
-      className="bg-[url('/images/bg-mobile-light.jpg')] dark:bg-[url('/images/bg-mobile-dark.jpg')] bg-gray-300 bg-no-repeat bg-contain min-h-screen dark:bg-gray-900 transition-all duration-1000"
+      className="bg-mobile-light dark:bg-mobile-dark bg-gray-300 bg-no-repeat bg-contain min-h-screen dark:bg-gray-900 transition-all duration-1000 md:bg-desktop-light md:dark:bg-desktop-dark"
     >
       <Header />
-      <main className="container mx-auto px-4 mt-8">
+      <main className="container mx-auto px-4 mt-8 md:max-w-xl">
         <TodoCreate createTodo={createTodo} />
         <TodoList
           todos={filteredTodos()}
