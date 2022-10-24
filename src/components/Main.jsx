@@ -6,21 +6,24 @@ import TodoList from "../components/todo/TodoList"
 import TodoFilter from "../components/todo/TodoFilter"
 import TodoComputed from "../components/todo/TodoComputed"
 
-const initialStateTodos = [
-  { id: '1', title: 'Learn JS', completed: false },
-  { id: '2', title: 'Learn TS', completed: true },
-  { id: '3', title: 'Learn Astro', completed: false },
-  { id: '4', title: 'Learn CSS', completed: false },
-]
+import { DragDropContext } from "@hello-pangea/dnd"
 
-// const initialStateTodos = JSON.parse(localStorage.getItem('todos')) || []
+const initialStateTodos = JSON.parse(localStorage.getItem('todos')) || []
+
+const reorder = (list, startIndex, endIndex) => {
+  const result = [...list]
+  const [removed] = result.splice(startIndex, 1)
+  result.splice(endIndex, 0, removed)
+
+  return result
+}
 
 const Main = () => {
   const [todos, setTodos] = useState(initialStateTodos)
 
-  // useEffect(() => {
-  //   localStorage.setItem('todos', JSON.stringify(todos))
-  // }, [todos])
+  useEffect(() => {
+    localStorage.setItem('todos', JSON.stringify(todos))
+  }, [todos])
 
   const createTodo = (title) => {
     const newTodo = {
@@ -59,6 +62,19 @@ const Main = () => {
     }
   }
 
+  const handleDragEnd = (result) => {
+    const { destination, source } = result
+    if (!destination) return
+    if (
+      source.index === destination.index &&
+      source.droppableId === destination.droppableId
+    )
+      return
+
+    setTodos((prevTasks) =>
+      reorder(prevTasks, source.index, destination.index)
+    )
+  }
 
   return (
     <div
@@ -67,11 +83,14 @@ const Main = () => {
       <Header />
       <main className="container mx-auto px-4 mt-8 md:max-w-xl">
         <TodoCreate createTodo={createTodo} />
-        <TodoList
-          todos={filteredTodos()}
-          updateTodo={updateTodo}
-          removeTodo={removeTodo}
-        />
+        <DragDropContext onDragEnd={handleDragEnd}>
+          {/* <DragDropContext> */}
+          <TodoList
+            todos={filteredTodos()}
+            updateTodo={updateTodo}
+            removeTodo={removeTodo}
+          />
+        </DragDropContext>
         <TodoComputed
           countItemsLeft={countItemsLeft}
           clearCompleted={clearCompleted}
